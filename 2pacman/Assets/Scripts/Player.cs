@@ -8,12 +8,12 @@ public class Player : MonoBehaviour {
 	
 	public int score;
 	public float velocity = 10.0f;
-	public float gravity = 20.0f;
+	public float gravity = 100.0f;
 	public float rotation_speed = 10.0f;
-
 
 	private CharacterController controller = new CharacterController();
 	public SphereCollider _collider = new SphereCollider();
+
 	
 	void Start () {
 		gameObject.AddComponent("CharacterController");
@@ -28,7 +28,7 @@ public class Player : MonoBehaviour {
 		Move_Translate();
 		Move_Rotate();
 
-	
+
 	}
 
 	public void Move_Translate(){
@@ -58,10 +58,5 @@ public class Player : MonoBehaviour {
 		
 	}
 
-	public void OnCollisionEnter(Collision colli){
-		if(colli.gameObject.name == "Coin")
-			Debug.Log("COIN");
-		else
-			Debug.Log("no collision");
-	}
+
 }

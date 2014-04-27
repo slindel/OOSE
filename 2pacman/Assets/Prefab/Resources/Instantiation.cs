@@ -20,9 +20,11 @@ public class Instantiation : MonoBehaviour {
 		player.renderer.material.color = new Color(1,0,0);
 		player.AddComponent("Player");
 
+
 		gameObject.AddComponent("Camera");
 		cam = gameObject.GetComponent<Camera>();
 		gameObject.AddComponent("CameraFollow");
+		cam.rect = new Rect(0, 0, 1,0.5f);
 
 		cam.GetComponent<CameraFollow>().target = player.transform;
 
