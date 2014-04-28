@@ -27,8 +27,6 @@ public class Player_controller : MonoBehaviour {
 	void Update () {
 		Move_Translate();
 		Move_Rotate();
-
-
 	}
 
 	public void Move_Translate(){
@@ -54,9 +52,5 @@ public class Player_controller : MonoBehaviour {
 		Vector3 targetDirection = horizontalInput*right + forward;
 		moveDirection = Vector3.RotateTowards(moveDirection, targetDirection, 200*Mathf.Deg2Rad*Time.deltaTime, 1000);
 		gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, Quaternion.LookRotation(targetDirection),rotation_speed*Time.deltaTime);
-
-		
 	}
-
-
 }
