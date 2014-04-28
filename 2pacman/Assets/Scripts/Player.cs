@@ -2,61 +2,35 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
-	private Vector3 moveDirection = new Vector3(0,0,0);
-	private Vector3 forward = new Vector3(0,0,0);
-	private Vector3 right = new Vector3(0,0,0);
-	
-	public int score;
-	public float velocity = 10.0f;
-	public float gravity = 100.0f;
-	public float rotation_speed = 10.0f;
 
-	private CharacterController controller = new CharacterController();
-	public SphereCollider _collider = new SphereCollider();
+	public Vector3 start_pos = new Vector3(0,0,0); //where the object will be placed when created
+	public int color_r = 1;
+	public int color_g = 0;
+	public int color_b = 0;
+	public Rect game_screen = new Rect(0,0,1,0.5f);
 
-	
+	//private Quaternion rot = Quaternion.identity; //quaternion.identity basically means 'no rotation'
+
+	private GameObject player;
+	private Camera cam;
+
 	void Start () {
-		gameObject.AddComponent("CharacterController");
-		gameObject.AddComponent("SphereCollider");
-		controller = gameObject.GetComponent<CharacterController>();
-		_collider = gameObject.GetComponent<SphereCollider>();
+
+		//place a player in the scene, set position and color
+		player = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+		player.transform.position = start_pos;
+		player.renderer.material = new Material(Shader.Find("Diffuse"));
+		player.renderer.material.color = new Color(color_r,color_g,color_b) ;
+		player.AddComponent("Player_controller");
+
+
+		gameObject.AddComponent("Camera");
+		cam = gameObject.GetComponent<Camera>();
+		gameObject.AddComponent("CameraFollow");
+		cam.rect = game_screen;
+
+		cam.GetComponent<CameraFollow>().target = player.transform;
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		Move_Translate();
-		Move_Rotate();
-
-
-	}
-
-	public void Move_Translate(){
-		Vector3 movement = new Vector3(0, 0, Input.GetAxis("Vertical"));
-		
-		movement = transform.TransformDirection(movement);
-		movement*= velocity;
-		if(!controller.isGrounded)
-			movement.y -=gravity*Time.deltaTime;
-		
-		controller.Move (movement*Time.deltaTime);
-		
-	}
-	
-	public void Move_Rotate(){
-
-		forward = transform.forward;
-		right.x = forward.z;
-		right.y = 0;
-		right.z = -forward.x;
-		
-		float horizontalInput = Input.GetAxisRaw("Horizontal");
-		Vector3 targetDirection = horizontalInput*right + forward;
-		moveDirection = Vector3.RotateTowards(moveDirection, targetDirection, 200*Mathf.Deg2Rad*Time.deltaTime, 1000);
-		gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, Quaternion.LookRotation(targetDirection),rotation_speed*Time.deltaTime);
-
-		
-	}
-
 
 }
