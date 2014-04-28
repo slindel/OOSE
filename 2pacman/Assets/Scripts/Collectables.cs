@@ -5,7 +5,7 @@ public class Collectables : MonoBehaviour {
 
 
 	int score = 0;
-	// Function: 
+	// Function: on collision with coin, adds five points to the score
 	public void OnCollisionEnter( Collision other ) {
 		if (other.gameObject.name == "coin") {
 						score += 5;
@@ -14,6 +14,7 @@ public class Collectables : MonoBehaviour {
 						Debug.Log (score);
 
 				} 
+		// When colliding with a joint, 10 points... 
 		if (other.gameObject.name == "joint") {
 						score += 10;
 						Destroy (other.gameObject);
