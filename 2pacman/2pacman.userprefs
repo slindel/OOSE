@@ -1,9 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\..\Desktop\2pacman\Assets\Scripts\NetworkManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI_Stuff.cs">
     <Files>
-      <File FileName="..\..\..\..\Desktop\2pacman\Assets\Scripts\NetworkManager.cs" Line="90" Column="2" />
-      <File FileName="..\..\..\..\Desktop\2pacman\Assets\Scripts\Player.cs" Line="30" Column="43" />
+      <File FileName="Assets\Scripts\GUI_Stuff.cs" Line="37" Column="4" />
+      <File FileName="C:\Users\Razvan\Desktop\2pacman\Assets\Scripts\NetworkManager.cs" Line="13" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

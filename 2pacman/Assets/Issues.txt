@@ -1,0 +1,32 @@
+ - Create boundaries
+	- Assign materials
+	- Generate maze
+ - Create player_1 and player_2
+	- Assign model to players
+	- Assign controls (+camera)
+	- Detect collisions
+ - Create collectables
+	- Destroy on collision
+	- Add value to score
+ - Create time
+	- Setup timer
+	- Setup beginning and ending of game
+
+
+
+2Pacman v0.1
+	- Added procedurally generated maze
+2Pacman v0.2
+	- Added player_1 and player_2 with keyboard controls
+	- Assigned camera to player_1 and player_2
+2Pacman v0.3
+	- Added collision detection
+	- Added destruction of objects based on collisions
+2Pacman v0.4
+	- Added score based on collision detections
+2Pacman v0.5
+	- Added timer to control beginning and ending of game
+
+
+
+
