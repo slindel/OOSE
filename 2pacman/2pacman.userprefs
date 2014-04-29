@@ -1,0 +1,13 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\..\Desktop\2pacman\Assets\Scripts\NetworkManager.cs">
+    <Files>
+      <File FileName="..\..\..\..\Desktop\2pacman\Assets\Scripts\NetworkManager.cs" Line="90" Column="2" />
+      <File FileName="..\..\..\..\Desktop\2pacman\Assets\Scripts\Player.cs" Line="30" Column="43" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
