@@ -11,10 +11,10 @@ GameObject:
   - 33: {fileID: 3300000}
   - 135: {fileID: 13500000}
   - 23: {fileID: 2300000}
-  - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
-  - 148: {fileID: 14800000}
   - 143: {fileID: 14300000}
+  - 114: {fileID: 11400000}
+  - 148: {fileID: 14800000}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -84,9 +84,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d236901230ce0734d93fc52d0d7157ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinScore: 10
-  jointScore: 100
+  button: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  NetMgr: {fileID: 0}
+  Mze: {fileID: 0}
+  score1: 0
+  score2: 0
+  end: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -98,6 +102,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a9e131198e4cd45a7a7c32bf29033f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score1: 0
+  score2: 0
+  coinScore: 10
+  jointScore: 100
+  myGui: {fileID: 0}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

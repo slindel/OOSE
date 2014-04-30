@@ -2,17 +2,22 @@
 using System.Collections;
 
 public class GUI_Stuff : MonoBehaviour {
-	public int coinScore = 10;
-	public int jointScore = 100;
-	private int score = 0;
+
+	int scoreMax=6040;
+	public Buttons button;
 	public Color color;
 	float btnX;
 	float btnY;
 	float btnW;
 	float btnH;
 	public NetworkManager NetMgr;
-
-	string scoreText = "Score: ";
+	 GUIStyle pacTxt;
+	 GUIStyle copTxt;
+	public MazeGeneration Mze;
+	//public MovementScript Movement;
+	public int score1=0;
+	public int score2=0;
+	public bool end=false;
 
 
 	void Start () {
@@ -21,11 +26,18 @@ public class GUI_Stuff : MonoBehaviour {
 		btnW =Screen.width* 0.15f;
 		btnH =Screen.height* 0.15f;
 		NetMgr=GetComponent<NetworkManager>();
+		Mze=GetComponent<MazeGeneration>();
+		button=GetComponent<Buttons>();
+		//Movement=GetComponent<MovementScript>();
+		//score1= Movement.score1;
+		//score2= Movement.score2;
+	//	GameObject player= GameObject.FindGameObjectWithTag("player");
 
 	}
+
 	void OnGUI(){
 
-		if(!Network.isClient && !Network.isServer){
+		/*if(!Network.isClient && !Network.isServer){
 			if (GUI.Button(new Rect(btnX, btnY, btnW, btnH), "Start Server")){
 				Debug.Log("Starting Server");
 				NetMgr.startServer();
@@ -40,26 +52,28 @@ public class GUI_Stuff : MonoBehaviour {
 						Network.Connect(NetMgr.hostData[i]);
 				}
 			}
+
+		}*/
+		if(score1+score2<scoreMax){
+
+			GUI.Label (new Rect (10, 10, 100, 20), "2pac: " + score1);
+			GUI.Label (new Rect (120, 10, 100, 20), "Cop: " + score2);
 		}
-		else
-			GUI.Label (new Rect (10, 10, 100, 20), "Score: "+score);
-	}
-
-	void Update () {
-	}
-
-	void OnTriggerEnter(Collider col){
-		if (col.gameObject.name == "ballPrefab(Clone)") {
-			//Debug.Log("BALL COLLISION!");
-			score += coinScore;	
-			Destroy(col.gameObject);
-
-		} else if (col.gameObject.name == "bigballPrefab(Clone)") {
-			//Debug.Log ("BIGBALL COLLISION!");
-			score += jointScore;
-			Destroy(col.gameObject);
+		else if (score1>score2){
+			pacTxt.fontSize = 36;
+			pacTxt.normal.textColor = Color.blue;
+			GUI.Label(new Rect(Screen.width/2,btnY, 100, 100), "Game over, 2Pac won");
+				
+			}
+		}
+		else {
+			GUI.Label(new Rect(Screen.width/2,Screen.height/2, 100, 100), "Game over, The officer won");
 		}
 	}
+
+	
+
+
 }
 
 

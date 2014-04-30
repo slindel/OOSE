@@ -1,9 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI_Stuff.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MazeGeneration.cs">
     <Files>
-      <File FileName="Assets\Scripts\GUI_Stuff.cs" Line="37" Column="4" />
-      <File FileName="C:\Users\Razvan\Desktop\2pacman\Assets\Scripts\NetworkManager.cs" Line="13" Column="17" />
+      <File FileName="Assets\Scripts\NetworkManager.cs" Line="60" Column="21" />
+      <File FileName="Assets\Scripts\MazeGeneration.cs" Line="88" Column="45" />
+      <File FileName="Assets\Scripts\MovementScript.cs" Line="25" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

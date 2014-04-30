@@ -14,6 +14,7 @@ public class NetworkManager : MonoBehaviour {
 	public Transform spawnObject1;
 	public Transform spawnObject2;
 	Vector3 SpawningPos;
+	MazeGeneration maze;
 
 
 
@@ -22,6 +23,7 @@ public class NetworkManager : MonoBehaviour {
 		 btnY =Screen.height* 0.80f;
 		 btnW =Screen.width* 0.15f;
 		 btnH =Screen.height* 0.15f;
+		maze=GetComponent<MazeGeneration>();
 	}
 
 	public void startServer(){
@@ -46,18 +48,22 @@ public class NetworkManager : MonoBehaviour {
 	}
 
 	public void spawnPlayer(){
-		//SpawningPos
+
 		Network.Instantiate(playerPrefab, spawnObject1.position, Quaternion.identity, 0);
 
 	}
 
 	void OnServerInitialized() {
-		Debug.Log("Server initialized and ready");
-		spawnPlayer();
+		Vector3 copColor=new Vector3 (1,0,0);
+		networkView.RPC("setColor", RPCMode.AllBuffered, copColor);
+		Vector3 clr= new Vector3(1,0,0);
+		//maze.setColor(clr);
+		maze.spawn2Pac();
+
 	}
 	
 	void OnConnectedToServer(){
-		spawnPlayer();
+		maze.spawnCop();
 	}
 
 	void OnMasterServerEvent(MasterServerEvent mse){

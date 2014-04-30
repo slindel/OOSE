@@ -408,14 +408,20 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 661365461}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94196dbda006bda4d8e7a48e14dcfde6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pacTex: {fileID: 0}
+  copTex: {fileID: 0}
   wallPrefab: {fileID: 400000, guid: 4f659a4361e8ac84b9d6ba33eda8cd1d, type: 2}
   ballPrefab: {fileID: 400000, guid: 2b77995e80271e44e929d0b3b42e85fe, type: 2}
   bigballPrefab: {fileID: 400000, guid: a408e52cda3c99140aa39d8f908e7075, type: 2}
+  pacPrefab: {fileID: 0}
+  copPrefab: {fileID: 0}
+  spawnObject1: {fileID: 0}
+  spawnObject2: {fileID: 0}
 --- !u!1 &702120693
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,7 +500,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 1298550667}
   - 114: {fileID: 1298550666}
+  - 114: {fileID: 1298550669}
   - 114: {fileID: 1298550668}
+  - 114: {fileID: 1298550670}
+  - 148: {fileID: 1298550671}
+  - 114: {fileID: 1298550672}
   m_Layer: 0
   m_Name: GuiObject
   m_TagString: Untagged
@@ -508,15 +518,18 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1298550665}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d236901230ce0734d93fc52d0d7157ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinScore: 10
-  jointScore: 100
+  button: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
   NetMgr: {fileID: 0}
+  Mze: {fileID: 0}
+  score1: 0
+  score2: 0
+  end: 0
 --- !u!4 &1298550667
 Transform:
   m_ObjectHideFlags: 0
@@ -536,12 +549,73 @@ MonoBehaviour:
   m_GameObject: {fileID: 1298550665}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94196dbda006bda4d8e7a48e14dcfde6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pacTex: {fileID: 2800000, guid: 5c276a4fbcb918544921b97a11583733, type: 3}
+  copTex: {fileID: 2800000, guid: e20605a9412dec143befaa3280bbb648, type: 3}
+  wallPrefab: {fileID: 400000, guid: 4f659a4361e8ac84b9d6ba33eda8cd1d, type: 2}
+  ballPrefab: {fileID: 400000, guid: 2b77995e80271e44e929d0b3b42e85fe, type: 2}
+  bigballPrefab: {fileID: 400000, guid: a408e52cda3c99140aa39d8f908e7075, type: 2}
+  pacPrefab: {fileID: 100000, guid: bc6bd0ce9cb02674d8052ad063f9d027, type: 2}
+  copPrefab: {fileID: 100000, guid: bc6bd0ce9cb02674d8052ad063f9d027, type: 2}
+  spawnObject1: {fileID: 1615016425}
+  spawnObject2: {fileID: 1873724882}
+--- !u!114 &1298550669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1298550665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bca8971a9ec83d94b841c0b7c28f7d0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 100000, guid: bc6bd0ce9cb02674d8052ad063f9d027, type: 2}
   spawnObject1: {fileID: 1615016425}
   spawnObject2: {fileID: 1873724882}
+--- !u!114 &1298550670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1298550665}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77a9e131198e4cd45a7a7c32bf29033f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score1: 0
+  score2: 0
+  coinScore: 10
+  jointScore: 100
+  myGui: {fileID: 1298550666}
+--- !u!148 &1298550671
+NetworkView:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1298550665}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 1298550667}
+  m_ViewID:
+    m_ID: 1
+    m_Type: 1
+--- !u!114 &1298550672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1298550665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dde480c77693e14b9337304a275061e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  netw: {fileID: 0}
+  Gstuff: {fileID: 1298550666}
 --- !u!1 &1464214446
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,7 +708,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1615016424}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 37, y: 1, z: -26}
+  m_LocalPosition: {x: 37.3749657, y: 6.18199158, z: -25.4708519}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -729,33 +803,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1873724881}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39, y: 1, z: 22}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
---- !u!1 &1917387013
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1917387015}
-  m_Layer: 0
-  m_Name: NetworkObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1917387015
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1917387013}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 37, y: 1, z: -26}
+  m_LocalPosition: {x: -39.1622047, y: 3, z: 21.5999641}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
