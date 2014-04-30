@@ -33,7 +33,7 @@ public class NetworkManager : MonoBehaviour {
 			}
 		}
 	}
-	//spanw a player as server and get it`s color 
+	//spanw a player as server and broadcast it`s color 
 	void OnServerInitialized() {
 		Vector3 copColor=new Vector3 (1,0,0);
 		networkView.RPC("setColor", RPCMode.AllBuffered, copColor);
