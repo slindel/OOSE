@@ -2,41 +2,28 @@
 using System.Collections;
 
 public class NetworkManager : MonoBehaviour {
-	float btnX;
-	float btnY;
-	float btnW;
-	float btnH;
-	string gameName = "LSRM_2pacman";
-	bool refreshing = false;
-	public HostData[] hostData;
-	int length;
-	public GameObject playerPrefab;
-	public Transform spawnObject1;
-	public Transform spawnObject2;
-	Vector3 SpawningPos;
-	MazeGeneration maze;
+	string gameName = "LSRM_2pacman"; // the unique name to be found on the Unity Master Server
+	bool refreshing = false; // a bool to control the client
+	public HostData[] hostData; //Master server info stored in here
+	MazeGeneration maze; // relation with mazeGeneration class
 
 
 
 	void Start () {
-		 btnX =Screen.width* 0.05f;
-		 btnY =Screen.height* 0.80f;
-		 btnW =Screen.width* 0.15f;
-		 btnH =Screen.height* 0.15f;
 		maze=GetComponent<MazeGeneration>();
 	}
-
+	//initializing the server, note that now it's possible for only 2 players to connect, but the game supports more than 2
 	public void startServer(){
 		bool useNat = !Network.HavePublicAddress();
 		Network.InitializeServer(2,2500, useNat);
 		MasterServer.RegisterHost(gameName, "2pac-man server","Object oriented programing exam");
 	}
-
+	//checking for server with the unique server name stored in gameName
 	public void refreshServers(){
 		MasterServer.RequestHostList(gameName);
 		refreshing=true;
 		}
-
+	//when a server is found, store it`s info in hostData, to be accesed later
 	public void Update(){
 		if(refreshing){
 			if(MasterServer.PollHostList().Length > 0){
@@ -46,50 +33,22 @@ public class NetworkManager : MonoBehaviour {
 			}
 		}
 	}
-
-	public void spawnPlayer(){
-
-		Network.Instantiate(playerPrefab, spawnObject1.position, Quaternion.identity, 0);
-
-	}
-
+	//spanw a player as server and get it`s color 
 	void OnServerInitialized() {
 		Vector3 copColor=new Vector3 (1,0,0);
 		networkView.RPC("setColor", RPCMode.AllBuffered, copColor);
-		Vector3 clr= new Vector3(1,0,0);
-		//maze.setColor(clr);
 		maze.spawn2Pac();
 
 	}
-	
+	//spawn as many clients as necessary
 	void OnConnectedToServer(){
 		maze.spawnCop();
 	}
-
+	//debugging stuff
 	void OnMasterServerEvent(MasterServerEvent mse){
 		if(mse == MasterServerEvent.RegistrationSucceeded){
 			Debug.Log("Registration succeded");
 		}
 	}
-
-	// this part is handling the gui
-	/*void OnGUI(){
-		//GUI.Label(new Rect(btnX*1.5f +btnW , btnY*1.2f, btnW*3, btnH* 0.5f),"hello world");
-		if(!Network.isClient && !Network.isServer){
-			if (GUI.Button(new Rect(btnX, btnY, btnW, btnH), "Start Server")){
-				Debug.Log("Starting Server");
-				startServer();
-			}
-			if (GUI.Button(new Rect(btnX* 1.2f + btnW, btnY, btnW, btnH), "Load Servers")){
-				Debug.Log("Refreshing");
-				refreshServers();
-			}
-			if(hostData != null){
-				for(int i=0; i<hostData.Length; i++){
-					if(GUI.Button(new Rect(btnX*4.5f +btnW , btnY, btnW*1.5f, btnH* 0.5f),hostData[i].gameName))
-					Network.Connect(hostData[i]);
-				}
-			}
-		}
-	}*/
+	
 }
